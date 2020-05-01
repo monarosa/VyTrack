@@ -13,11 +13,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-//everything that is in common among pages
-//for example top menu elements don't belong to specific page
-//top menu appears on every single page
-//so we can keep them here
 public class BasePage {
+
+    public BasePage() {
+        PageFactory.initElements(Driver.get(), this);
+    }
 
     @FindBy(css = "div[class='loader-mask shown']")
     public WebElement loaderMask;
@@ -34,12 +34,7 @@ public class BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
-    public BasePage() {
-        //this method requires to provide webdriver object for @FindBy
-        //and page class
-        //this means this page class
-        PageFactory.initElements(Driver.get(), this);
-    }
+
 
     /**
      * While this loading screen present, html code is a not complete
